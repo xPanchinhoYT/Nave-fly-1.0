@@ -22,3 +22,10 @@ canvas {
     font-weight: bold;
     pointer-events: none;
 }
+
+
+canvas {
+    touch-action: none; 
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
