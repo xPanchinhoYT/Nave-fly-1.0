@@ -58,7 +58,7 @@ FRASES = [
     "Tu contraseña es Soy_manco123*",
     "WOOOW Crei que yo era manco 😨",
     "Que pende 😂🫵🏻",
-    "Obteniendo acceso de la camara... 🤢",
+    "Obteniendo acceso de la camara... 🤢",    #<<<<< Esa es la libreria de frases XD
     "67",
     "zV1P NEVER DIEEEEE!!!",
     "VAMO QUE SI SE PUEDE 🤪",
@@ -85,6 +85,24 @@ def on_keydown(event):
 
 document.addEventListener("keydown", create_proxy(on_keydown))
 document.addEventListener("keyup", create_proxy(lambda e: keys.update({e.code: False})))
+
+# --- CONTROLES UNIVERSALES (V1.2) ---
+def start_up(event):
+    keys["ArrowUp"] = True
+    if event.type == "touchstart":
+        event.preventDefault() # Evita zoom raro en móvil
+
+def stop_up(event):
+    keys["ArrowUp"] = False
+
+# Eventos para Mouse
+canvas.addEventListener("mousedown", create_proxy(start_up))
+window.addEventListener("mouseup", create_proxy(stop_up))
+
+# Eventos para Pantalla Táctil
+canvas.addEventListener("touchstart", create_proxy(start_up))
+canvas.addEventListener("touchend", create_proxy(stop_up))
+
 
 async def game_loop():
     global running, game_speed, WIDTH, HEIGHT, paused, high_score, immortal, immortal_end_time, last_star_spawn_time

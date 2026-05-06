@@ -2,17 +2,54 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Nave Infinita</title>
+
     <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
     <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
     <link rel="stylesheet" href="m.css">
+
+    <style>
+        body { 
+            margin: 0; 
+            padding: 0;
+            overflow: hidden; 
+            background: black; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        canvas {
+            touch-action: none; /* Bloquea el movimiento de la página al jugar */
+            -webkit-tap-highlight-color: transparent; /* Quita el cuadro azul al tocar */
+            user-select: none; /* Evita seleccionar texto por error */
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        #msg {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-family: Arial, sans-serif;
+            pointer-events: none; /* Para que no estorbe al hacer clic */
+            opacity: 0.7;
+        }
+    </style>
 </head>
 <body>
+
     <div id="game-container">
         <canvas id="gameCanvas"></canvas>
-        <div id="msg">¡Mantén Flecha ↑ para subir!</div>
+        <div id="msg">¡Mantén Flecha ↑ o Toca la pantalla para subir!</div>
     </div>
+
     <script type="py" src="m.py" config='{"packages":[]}'></script>
+
 </body>
 </html>
